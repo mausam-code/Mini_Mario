@@ -6,63 +6,235 @@
 <title>Mario Game Extended</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { width:100%; height:100%; overflow:hidden; background:skyblue; font-family:sans-serif; }
+  html, body { 
+    width:100%; height:100%; overflow:hidden; 
+    background: linear-gradient(to bottom, #1a2980, #26d0ce);
+    font-family: 'Press Start 2P', cursive, sans-serif;
+  }
+  
+  .game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
   .game {
-    position: relative; width: 2000px; height: 100vh;
+    position: relative; 
+    width: 2000px; 
+    height: 100vh;
     background: linear-gradient(to bottom, #5c94fc 0%, #87ceeb 100%);
+    transition: transform 0.5s ease;
   }
+  
+  .cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.7));
+  }
+  
   .ground {
-    position: absolute; bottom:0; width:100%; height:80px;
+    position: absolute; 
+    bottom:0; 
+    width:100%; 
+    height:80px;
     background: linear-gradient(to bottom, #228B22, #006400);
+    border-top: 5px solid #8B4513;
   }
+  
   .player {
-    position: absolute; width:40px; height:50px; background:red;
-    border-radius:10px; bottom:80px; left:100px;
-  }
-  .coin {
-    position: absolute; width:20px; height:20px; background:gold;
-    border-radius:50%; bottom:100px;
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin {0%{transform:rotateY(0deg);}100%{transform:rotateY(360deg);}}
-  .flag {
-    position: absolute; width:10px; height:120px; background:#444;
+    position: absolute; 
+    width:40px; 
+    height:50px; 
+    background: #e52521;
+    border-radius: 10px 10px 0 0;
     bottom:80px; 
+    left:100px;
+    z-index: 10;
+    background: 
+      linear-gradient(to right, #e52521 0%, #e52521 60%, #ff6b6b 100%),
+      radial-gradient(circle at 30px 15px, #ffcc00 8px, transparent 8px);
+    box-shadow: 0 5px 0 #b31d1a;
+    transition: transform 0.1s ease;
   }
+  
+  .player.jumping {
+    transform: scale(1.1, 0.9);
+  }
+  
+  .coin {
+    position: absolute; 
+    width:20px; 
+    height:20px; 
+    background: radial-gradient(circle at 7px 7px, #ffd700, #daa520);
+    border-radius:50%; 
+    bottom:100px;
+    animation: spin 1s linear infinite, float 2s ease-in-out infinite;
+    box-shadow: 0 0 8px gold;
+    z-index: 5;
+  }
+  
+  .obstacle {
+    position: absolute;
+    bottom: 80px;
+  }
+  
+  .goomba {
+    width: 40px;
+    height: 40px;
+    background: #8B4513;
+    border-radius: 50% 50% 0 0;
+    animation: walk 3s linear infinite;
+    background: 
+      linear-gradient(to bottom, #8B4513 0%, #8B4513 70%, #6b3300 100%),
+      radial-gradient(circle at 10px 10px, #000 4px, transparent 4px),
+      radial-gradient(circle at 30px 10px, #000 4px, transparent 4px);
+  }
+  
+  .spike {
+    width: 40px;
+    height: 20px;
+    background: #444;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  }
+  
+  .flag {
+    position: absolute; 
+    width:10px; 
+    height:120px; 
+    background: linear-gradient(to right, #8B4513, #5D2906);
+    bottom:80px;
+    z-index: 8;
+  }
+  
   .flag::after {
-    content:''; position:absolute; top:0; left:10px;
-    width:40px; height:25px; background:red;
+    content:''; 
+    position:absolute; 
+    top:0; 
+    left:10px;
+    width:40px; 
+    height:25px; 
+    background: linear-gradient(to right, #e52521, #ff0000);
+    border-radius: 0 5px 5px 0;
+    animation: wave 1.5s infinite linear;
+    transform-origin: left center;
   }
+  
+  .block {
+    width: 40px;
+    height: 40px;
+    background: #d2691e;
+    border: 3px solid #8B4513;
+    border-radius: 5px;
+    box-shadow: inset 3px 3px 0 #e87d3e, inset -3px -3px 0 #8d4a0f;
+  }
+  
   .hud {
-    position:fixed; top:10px; left:10px; color:white; font-size:18px; text-shadow:1px 1px 2px black; z-index:100;
+    position:fixed; 
+    top:10px; 
+    left:10px; 
+    color:white; 
+    font-size:18px; 
+    text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; 
+    z-index:100;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid gold;
   }
+  
   .mobile-buttons {
-    position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-    display:flex; gap:10px; z-index:100;
+    position:fixed; 
+    bottom:20px; 
+    left:50%; 
+    transform:translateX(-50%);
+    display:flex; 
+    gap:20px; 
+    z-index:100;
   }
+  
   .btn {
-    width:60px; height:60px; background:rgba(0,0,0,0.3); color:white; font-size:20px;
-    border:2px solid white; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    width:70px; 
+    height:70px; 
+    background:rgba(139, 69, 19, 0.7); 
+    color:white; 
+    font-size:30px;
+    border:3px solid #ffcc00; 
+    border-radius:50%; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center;
     user-select:none;
+    box-shadow: 0 5px 0 #8d4a0f;
+    text-shadow: 2px 2px 0 #000;
   }
-  .btn:active { background:rgba(255,255,255,0.2); }
+  
+  .btn:active { 
+    transform: translateY(5px);
+    box-shadow: none;
+    background: rgba(226, 114, 31, 0.7);
+  }
+  
+  .level-up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: gold;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    animation: levelUp 2s ease-out;
+  }
+  
+  @keyframes spin {0%{transform:rotateY(0deg);}100%{transform:rotateY(360deg);}}
+  @keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  @keyframes walk {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+  }
+  @keyframes wave {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+  }
+  @keyframes levelUp {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+    30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    70% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+  }
 </style>
 </head>
 <body>
 
-<div class="game" id="game">
-  <div class="ground"></div>
-  <div class="player" id="player"></div>
-  <!-- Coins closer to ground -->
-  <div class="coin" style="left:300px;"></div>
-  <div class="coin" style="left:500px;"></div>
-  <div class="coin" style="left:800px;"></div>
-  <!-- Flag at end -->
-  <div class="flag" style="left:1000px;"></div>
+<div class="game-container">
+  <div class="game" id="game">
+    <!-- Clouds will be added by JS -->
+    <div class="ground"></div>
+    <div class="player" id="player"></div>
+    <!-- Coins -->
+    <div class="coin" style="left:300px;"></div>
+    <div class="coin" style="left:500px;"></div>
+    <div class="coin" style="left:800px;"></div>
+    <div class="coin" style="left:1000px;"></div>
+    <div class="coin" style="left:1200px;"></div>
+    <div class="coin" style="left:1400px;"></div>
+    <div class="coin" style="left:1600px;"></div>
+    
+    <!-- Obstacles will be added by JS -->
+    
+    <!-- Flag at end -->
+    <div class="flag" style="left:1800px;"></div>
+  </div>
+  
+  <div class="level-up" id="levelUp">Level Up!</div>
 </div>
 
 <div class="hud">
-  Score: <span id="score">0</span> | Level: <span id="level">1</span>
+  Score: <span id="score">0</span> | Level: <span id="level">1</span> | Lives: <span id="lives">3</span>
 </div>
 
 <div class="mobile-buttons">
@@ -76,77 +248,220 @@ const player = document.getElementById('player');
 const coins = document.querySelectorAll('.coin');
 const scoreEl = document.getElementById('score');
 const levelEl = document.getElementById('level');
+const livesEl = document.getElementById('lives');
 const flag = document.querySelector('.flag');
+const game = document.getElementById('game');
+const levelUp = document.getElementById('levelUp');
 
-let score = 0, level=1;
+// Create clouds
+for (let i = 0; i < 8; i++) {
+  const cloud = document.createElement('div');
+  cloud.className = 'cloud';
+  const size = 40 + Math.random() * 80;
+  cloud.style.width = size + 'px';
+  cloud.style.height = size/2 + 'px';
+  cloud.style.top = (20 + Math.random() * 40) + '%';
+  cloud.style.left = (Math.random() * 100) + '%';
+  cloud.style.opacity = 0.7 + Math.random() * 0.3;
+  game.insertBefore(cloud, game.firstChild);
+}
+
+let score = 0, level = 1, lives = 3;
 let gameState = { x:100, y:0, vx:0, vy:0, isJumping:false };
-const physics = { gravity:0.5, jumpStrength:10, moveSpeed:4, friction:0.9 };
+const physics = { gravity:0.5, jumpStrength:12, moveSpeed:5, friction:0.85 };
 let keys = {};
+let obstacles = [];
+let gameRunning = true;
 
-// Keyboard
-document.addEventListener('keydown', e=> keys[e.code]=true);
-document.addEventListener('keyup', e=> keys[e.code]=false);
+// Initialize level
+setupLevel(level);
 
-// Mobile
-let left=false, right=false, jump=false;
-document.getElementById('leftBtn').addEventListener('touchstart', e=>{e.preventDefault();left=true;});
-document.getElementById('leftBtn').addEventListener('touchend', e=>{e.preventDefault();left=false;});
-document.getElementById('rightBtn').addEventListener('touchstart', e=>{e.preventDefault();right=true;});
-document.getElementById('rightBtn').addEventListener('touchend', e=>{e.preventDefault();right=false;});
-document.getElementById('jumpBtn').addEventListener('touchstart', e=>{e.preventDefault();jump=true;});
-document.getElementById('jumpBtn').addEventListener('touchend', e=>{e.preventDefault();jump=false;});
+// Keyboard controls
+document.addEventListener('keydown', e => keys[e.code] = true);
+document.addEventListener('keyup', e => keys[e.code] = false);
 
-// Loop
-function gameLoop(){
-  // Move
-  if(keys['ArrowRight']||right) gameState.vx=physics.moveSpeed;
-  else if(keys['ArrowLeft']||left) gameState.vx=-physics.moveSpeed;
-  else gameState.vx*=physics.friction;
+// Mobile controls
+let left = false, right = false, jump = false;
+document.getElementById('leftBtn').addEventListener('touchstart', e => { e.preventDefault(); left = true; });
+document.getElementById('leftBtn').addEventListener('touchend', e => { e.preventDefault(); left = false; });
+document.getElementById('rightBtn').addEventListener('touchstart', e => { e.preventDefault(); right = true; });
+document.getElementById('rightBtn').addEventListener('touchend', e => { e.preventDefault(); right = false; });
+document.getElementById('jumpBtn').addEventListener('touchstart', e => { e.preventDefault(); jump = true; });
+document.getElementById('jumpBtn').addEventListener('touchend', e => { e.preventDefault(); jump = false; });
 
-  // Jump
-  if((keys['Space']||jump) && !gameState.isJumping){
-    gameState.vy=physics.jumpStrength;
-    gameState.isJumping=true;
+function setupLevel(level) {
+  // Clear existing obstacles
+  obstacles.forEach(obs => obs.element.remove());
+  obstacles = [];
+  
+  // Create obstacles based on level
+  const createObstacle = (type, x, y) => {
+    const obstacle = document.createElement('div');
+    obstacle.className = `obstacle ${type}`;
+    obstacle.style.left = x + 'px';
+    obstacle.style.bottom = (80 + y) + 'px';
+    game.appendChild(obstacle);
+    
+    const width = type === 'spike' ? 40 : 40;
+    const height = type === 'spike' ? 20 : 40;
+    
+    obstacles.push({
+      element: obstacle,
+      type: type,
+      x: x,
+      y: y,
+      width: width,
+      height: height
+    });
+    
+    return obstacle;
+  };
+  
+  // Level-specific obstacles
+  if (level >= 2) {
+    createObstacle('goomba', 600, 0);
+    createObstacle('spike', 900, 0);
   }
+  if (level >= 3) {
+    createObstacle('goomba', 1000, 0);
+    createObstacle('block', 1200, 40);
+    createObstacle('spike', 1400, 0);
+  }
+  if (level >= 4) {
+    createObstacle('goomba', 1500, 0);
+    createObstacle('block', 1300, 40);
+    createObstacle('spike', 1600, 0);
+    createObstacle('spike', 1650, 0);
+  }
+  
+  // Reset coins
+  coins.forEach(c => c.style.display = 'block');
+}
 
-  // Apply gravity
+function checkCollision(player, obstacle) {
+  return player.x < obstacle.x + obstacle.width &&
+         player.x + 40 > obstacle.x &&
+         player.y < obstacle.y + obstacle.height &&
+         player.y + 50 > obstacle.y;
+}
+
+function resetPlayer() {
+  lives--;
+  livesEl.textContent = lives;
+  
+  if (lives <= 0) {
+    gameRunning = false;
+    alert(`Game Over! Your score: ${score}`);
+    // Reset game
+    score = 0;
+    level = 1;
+    lives = 3;
+    scoreEl.textContent = score;
+    levelEl.textContent = level;
+    livesEl.textContent = lives;
+    gameRunning = true;
+  }
+  
+  gameState.x = 100;
+  gameState.y = 0;
+  gameState.vx = 0;
+  gameState.vy = 0;
+  gameState.isJumping = false;
+}
+
+function gameLoop() {
+  if (!gameRunning) return;
+  
+  // Movement
+  if (keys['ArrowRight'] || right) gameState.vx = physics.moveSpeed;
+  else if (keys['ArrowLeft'] || left) gameState.vx = -physics.moveSpeed;
+  else gameState.vx *= physics.friction;
+  
+  // Jumping
+  player.classList.toggle('jumping', gameState.isJumping);
+  if ((keys['Space'] || keys['ArrowUp'] || jump) && !gameState.isJumping) {
+    gameState.vy = physics.jumpStrength;
+    gameState.isJumping = true;
+  }
+  
+  // Apply physics
   gameState.vy -= physics.gravity;
-
-  // Update pos
-  gameState.x+=gameState.vx;
-  gameState.y+=gameState.vy;
-
-  // Ground
-  if(gameState.y<=0){
-    gameState.y=0; gameState.vy=0; gameState.isJumping=false;
+  gameState.x += gameState.vx;
+  gameState.y += gameState.vy;
+  
+  // Ground collision
+  if (gameState.y <= 0) {
+    gameState.y = 0; 
+    gameState.vy = 0; 
+    gameState.isJumping = false;
   }
-
-  // Stay in bounds
-  if(gameState.x<0) gameState.x=0;
-
-  // Update DOM
-  player.style.left=gameState.x+'px';
-  player.style.bottom=(80+gameState.y)+'px';
-
-  // Coins
-  coins.forEach(coin=>{
-    if(coin.style.display==='none') return;
-    let cx=parseInt(coin.style.left);
-    if(Math.abs(gameState.x - cx)<30){
-      coin.style.display='none';
-      score+=100; scoreEl.textContent=score;
+  
+  // Boundaries
+  if (gameState.x < 0) gameState.x = 0;
+  
+  // Update player position
+  player.style.left = gameState.x + 'px';
+  player.style.bottom = (80 + gameState.y) + 'px';
+  
+  // Coin collection
+  coins.forEach(coin => {
+    if (coin.style.display === 'none') return;
+    const cx = parseInt(coin.style.left);
+    const cy = 100; // Coin height above ground
+    if (Math.abs(gameState.x + 20 - (cx + 10)) < 30 && 
+        Math.abs(gameState.y - (cy - 80)) < 30) {
+      coin.style.display = 'none';
+      score += 100; 
+      scoreEl.textContent = score;
     }
   });
+  
+  // Obstacle collision
+  const playerBox = {x: gameState.x, y: gameState.y, width:40, height:50};
+  obstacles.forEach(obs => {
+    if (checkCollision(playerBox, obs)) {
+      if (obs.type === 'goomba' && gameState.vy < 0 && gameState.y > 30) {
+        // Jumped on goomba
+        obs.element.style.display = 'none';
+        obstacles = obstacles.filter(o => o !== obs);
+        score += 200;
+        scoreEl.textContent = score;
+        gameState.vy = 5; // Bounce
+      } else {
+        resetPlayer();
+      }
+    }
+  });
+  
+  // Flag collision
+  const flagX = parseInt(flag.style.left);
+  if (gameState.x + 40 > flagX) {
+    level++;
+    levelEl.textContent = level;
+    setupLevel(level);
+    
+    // Show level up animation
+    levelUp.style.opacity = 1;
+    levelUp.style.animation = 'levelUp 2s ease-out';
 
-  // Flag reach
-  let flagX = parseInt(flag.style.left);
-  if(gameState.x+40 > flagX){
-    level+=1; levelEl.textContent=level;
-    gameState.x=100; // restart at start
-    // reset coins
-    coins.forEach(c=>c.style.display='block');
+    // Hide after 2s
+    setTimeout(() => {
+      levelUp.style.opacity = 0;
+      levelUp.style.animation = 'none';
+    }, 2000);
+    
+    // Reset player position
+    gameState.x = 100;
   }
-
+  
+  // Move the view when player reaches right side
+  const screenWidth = window.innerWidth;
+  if (gameState.x > screenWidth / 2) {
+    game.style.transform = `translateX(-${Math.min(gameState.x - screenWidth/2, 2000 - screenWidth)}px)`;
+  } else {
+    game.style.transform = 'translateX(0)';
+  }
+  
   requestAnimationFrame(gameLoop);
 }
 gameLoop();
