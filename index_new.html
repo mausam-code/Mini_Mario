@@ -12,18 +12,14 @@
     font-family: 'Press Start 2P', cursive, sans-serif;
     touch-action: manipulation;
   }
-  
+
   :root {
-
     --mario-red: #e52521;
-
     --mario-blue: #0055ff;
-
     --mario-skin: #ffdbac;
-
     --mario-brown: #8B4513;
-
   }
+  
   .game-container {
     position: relative;
     width: 100%;
@@ -56,450 +52,220 @@
     border-top: 0.5vh solid #8B4513;
   }
   
-  /* .player {
-    position: absolute;
-    width: 50px; 
-    height: 60px;
-    bottom:15vh;
-    left: 5vw;
-    z-index: 10;
-    background: 
-      linear-gradient(to right, #e52521 0%, #e52521 60%, #ff6b6b 100%),
-      radial-gradient(circle at 30% 15%, #ffcc00 8%, transparent 8%);
-    border-radius: 15px 15px 0 0;
-    box-shadow: 0 6px 0 #b31d1a;
-    transition: transform 0.1s ease;
-  }
-  
-  .player.jumping {
-    transform: scale(1.1, 0.9);
-  } */
-  
   .player {
-
     position: absolute;
-
     width: 50px;
-
     height: 60px;
-
     bottom: 15vh;
-
     left: 5vw;
-
     z-index: 10;
-
   }
-
-
 
   /* Improved Mario Character */
-
   .player .hat {
-
     position: absolute;
-
     top: 0;
-
     left: 8px;
-
     width: 34px;
-
     height: 18px;
-
     background: linear-gradient(to bottom, var(--mario-red), #b91c1c);
-
     border-radius: 17px 17px 0 0;
-
     box-shadow: inset 0 -3px 0 rgba(0,0,0,0.3);
-
   }
-
   
-
   .player .hat::before {
-
     content: "";
-
     position: absolute;
-
     top: 4px;
-
     left: 12px;
-
     width: 10px;
-
     height: 8px;
-
     background: white;
-
     border-radius: 50%;
-
     border: 2px solid #333;
-
   }
-
   
-
   .player .hat::after {
-
     content: "";
-
     position: absolute;
-
     bottom: -4px;
-
     left: -4px;
-
     width: 42px;
-
     height: 6px;
-
     background: #a91c1c;
-
     border-radius: 3px;
-
   }
-
-
 
   .player .face {
-
     position: absolute;
-
     top: 18px;
-
     left: 5px;
-
     width: 40px;
-
     height: 22px;
-
     background: var(--mario-skin);
-
     border-radius: 12px;
-
     box-shadow: inset 0 -2px 0 #e6c79c;
-
   }
-
-
 
   .player .nose {
-
     position: absolute;
-
     top: 26px;
-
     left: 22px;
-
     width: 6px;
-
     height: 6px;
-
     background: #d4a574;
-
     border-radius: 50%;
-
     box-shadow: inset -1px -1px 0 #c19660;
-
   }
-
-
 
   .player .moustache {
-
     position: absolute;
-
     top: 30px;
-
     left: 15px;
-
     width: 20px;
-
     height: 6px;
-
     background: #2d1810;
-
     border-radius: 10px;
-
     box-shadow: 0 1px 0 #1a0e08;
-
   }
-
-
 
   .player .eyes {
-
     position: absolute;
-
     top: 22px;
-
     left: 8px;
-
     width: 34px;
-
     height: 8px;
-
     display: flex;
-
     justify-content: space-between;
-
   }
-
   
-
   .player .eye {
-
     width: 10px;
-
     height: 8px;
-
     background: white;
-
     border-radius: 50%;
-
     border: 1px solid #333;
-
     position: relative;
-
   }
-
   
-
   .player .eye::after {
-
     content: "";
-
     position: absolute;
-
     top: 2px;
-
     left: 3px;
-
     width: 4px;
-
     height: 4px;
-
     background: black;
-
     border-radius: 50%;
-
   }
-
-
 
   .player .body {
-
     position: absolute;
-
     top: 40px;
-
     left: 5px;
-
     width: 40px;
-
     height: 20px;
-
     background: var(--mario-blue);
-
     border-radius: 8px;
-
     box-shadow: inset 0 -2px 0 #0044cc;
-
   }
-
   
-
   .player .body::before {
-
     content: "";
-
     position: absolute;
-
     top: 4px;
-
     left: 8px;
-
     width: 6px;
-
     height: 6px;
-
     background: #ffdc00;
-
     border-radius: 50%;
-
     border: 2px solid #cc9900;
-
   }
-
   
-
   .player .body::after {
-
     content: "";
-
     position: absolute;
-
     top: 4px;
-
     right: 8px;
-
     width: 6px;
-
     height: 6px;
-
     background: #ffdc00;
-
     border-radius: 50%;
-
     border: 2px solid #cc9900;
-
   }
-
-
 
   .player .arms {
-
     position: absolute;
-
     top: 42px;
-
     left: 0;
-
     width: 50px;
-
     height: 12px;
-
     display: flex;
-
     justify-content: space-between;
-
   }
-
   
-
   .player .arm {
-
     width: 8px;
-
     height: 12px;
-
     background: var(--mario-skin);
-
     border-radius: 4px;
-
     position: relative;
-
   }
-
   
-
   .player .arm::after {
-
     content: "";
-
     position: absolute;
-
     bottom: -4px;
-
     left: 0;
-
     width: 8px;
-
     height: 8px;
-
     background: white;
-
     border-radius: 4px;
-
     border: 1px solid #ccc;
-
   }
-
-
 
   .player .legs {
-
     position: absolute;
-
     bottom: 0;
-
     left: 10px;
-
     width: 30px;
-
     height: 12px;
-
     display: flex;
-
     justify-content: space-between;
-
   }
-
   
-
   .player .leg {
-
     width: 12px;
-
     height: 12px;
-
     background: var(--mario-brown);
-
     border-radius: 6px;
-
     position: relative;
-
     box-shadow: inset 0 -2px 0 #654321;
-
   }
-
   
-
   .player .leg::after {
-
     content: "";
-
     position: absolute;
-
     bottom: -2px;
-
     left: -2px;
-
     width: 16px;
-
     height: 4px;
-
     background: #5a3e2b;
-
     border-radius: 2px;
-
   }
-
-
 
   .player.jumping {
-
     transform: scale(1.05, 0.95);
-
   }
-
-
 
   .player.walking .arms .left {
-
     animation: swingArm 0.4s infinite;
-
   }
-
   
-
   .player.walking .arms .right {
-
     animation: swingArm 0.4s infinite reverse;
-
   }
+  
   .coin {
     position: absolute; 
     width: 35px;
@@ -722,12 +488,9 @@
     color: #aaa;
   }
 
-   .flying-spike {
-
+  .flying-spike {
     z-index : 12;
-
     animation : flySpin 1s linear infinite;
-
   }
 
   /* Mobile optimizations */
@@ -788,23 +551,14 @@
   }
 
   @keyframes swingArm {
-
     0% { transform: rotate(-10deg); }
-
     50% { transform: rotate(10deg); }
-
     100% { transform: rotate(-10deg); }
-
   }
 
-
-
   @keyframes flySpin {
-
     from { transform: rotate(0deg); }
-
     to { transform: rotate(360deg); }
-
   }
 
   @keyframes spin {0%{transform:rotateY(0deg);}100%{transform:rotateY(360deg);}}
@@ -830,41 +584,23 @@
   <div class="game" id="game">
     <div class="ground"></div>
     <div class="player" id="player">
-
       <div class="hat"></div>
-
       <div class="face"></div>
-
       <div class="nose"></div>
-
       <div class="moustache"></div>
-
       <div class="eyes">
-
         <div class="eye left"></div>
-
         <div class="eye right"></div>
-
       </div>
-
       <div class="body"></div>
-
       <div class="arms">
-
         <div class="arm left"></div>
-
         <div class="arm right"></div>
-
       </div>
-
       <div class="legs">
-
         <div class="leg left"></div>
-
         <div class="leg right"></div>
-
       </div>
-
     </div>
   </div>
   
@@ -922,514 +658,232 @@ let flag;
 let gameRunning = false;
 let gameWidth = 3000;
 let cameraX = 0;
-
 let flyingSpikes = [];
 
 // Mobile button states
-let mobileControls = {
-  left: false,
-  right: false,
-  jump: false
-};
+let mobileControls = { left: false, right: false, jump: false };
 
 // Initialize game
 function initGame() {
-  // Clear existing elements
   document.querySelectorAll('.coin, .obstacle, .flag').forEach(el => el.remove());
-
   flyingSpikes.forEach(s => s.element.remove());
-
   coins = []; obstacles = []; flyingSpikes = [];
-  // Setup first level
   setupLevel(level);
-  
-  // Reset player
   resetPlayer(true);
-  
-  // Update HUD
   scoreEl.textContent = score;
   levelEl.textContent = level;
   livesEl.textContent = lives;
-  
-  // Hide start screen
   startScreen.style.display = 'none';
-  
-  // Start game loop
   gameRunning = true;
   gameLoop();
 }
 
 function setupLevel(currentLevel) {
-  // Clear existing elements
   coins.forEach(c => c.element.remove());
   obstacles.forEach(o => o.element.remove());
   if (flag) flag.element.remove();
-  
   coins = []; obstacles = [];
-
   let coinPositions = [], coinCount = Math.min(8 + currentLevel * 2, 25);
-
   for (let i=0; i<coinCount; i++) {
     let x;
-    do {
-      x = 300 + Math.random() * (gameWidth - 600);
-    } while (coinPositions.some(pos => Math.abs(pos - x) < 120));
-    
-    coinPositions.push(x);
-    createCoin(x);
+    do { x=300+Math.random()*(gameWidth-600); }
+    while (coinPositions.some(pos=>Math.abs(pos-x)<120));
+    coinPositions.push(x); createCoin(x);
   }
-  
-  // Create flag at end
   flag = createFlag(gameWidth - 200);
-  
-  // Create obstacles based on level
-  if (currentLevel >= 1) {
-    createObstacle('goomba', 600, 0);
-    createObstacle('spike', 900, 0);
-    createObstacle('block', 1200, 50);
-  }
-  
-  if (currentLevel >= 2) {
-    createObstacle('goomba', 1500, 0);
-    createObstacle('plant', 1800, 0);
-    createObstacle('spike', 2000, 0);
-    createObstacle('block', 2200, 50);
-  }
-  
-  if (currentLevel >= 3) {
-    createObstacle('goomba', 2400, 0);
-    createObstacle('spike', 2450, 0);
-    createObstacle('spike', 2500, 0);
-    createObstacle('plant', 2550, 0);
-    createObstacle('block', 2600, 100);
-  }
-  
+  if (currentLevel>=1) { createObstacle('goomba',600,0); createObstacle('spike',900,0); createObstacle('block',1200,50);}
+  if (currentLevel>=2) { createObstacle('goomba',1500,0); createObstacle('plant',1800,0); createObstacle('spike',2000,0); createObstacle('block',2200,50);}
+  if (currentLevel>=3) { createObstacle('goomba',2400,0); createObstacle('spike',2450,0); createObstacle('plant',2550,0); createObstacle('block',2600,100);}
   if (currentLevel>=4) {
-
     let extra = Math.min(currentLevel-3,10);
-
     for(let i=0;i<extra;i++){
-
       let types=['goomba','spike','plant','block'], type=types[Math.floor(Math.random()*types.length)];
-
       let x=800+Math.random()*(gameWidth-1200), y=type==='block'?50+Math.random()*100:0;
-
       if(!obstacles.some(obs=>Math.abs(obs.x-x)<80)) createObstacle(type,x,y);
     }
   }
-  
-  if (currentLevel >= 5) {
-    for (let i = 0; i < currentLevel; i++) {
-      const types = ['goomba', 'spike', 'plant', 'block'];
-      const type = types[Math.floor(Math.random() * types.length)];
-      const x = 1000 + Math.random() * (gameWidth - 1500);
-      const y = type === 'block' ? 50 + Math.random() * 50 : 0;
-      createObstacle(type, x, y);
-    }
+  if(currentLevel>=2){
+    let flyCount=Math.min(Math.floor(currentLevel/2),5);
+    for(let i=0;i<flyCount;i++) setTimeout(()=>createFlyingSpike(),1000+i*2000);
   }
 }
 
 function createCoin(x) {
-  const coin = document.createElement('div');
-  coin.className = 'coin';
-  coin.style.left = x + 'px';
-  game.appendChild(coin);
-  
-  coins.push({
-    element: coin,
-    x: x,
-    collected: false
-  });
+  const coin=document.createElement('div'); coin.className='coin';
+  coin.style.left=x+'px'; game.appendChild(coin);
+  coins.push({element:coin, x:x, collected:false});
 }
 
-function createObstacle(type, x, y) {
-  const obstacle = document.createElement('div');
-  obstacle.className = `obstacle ${type}`;
-  obstacle.style.left = x + 'px';
-  obstacle.style.bottom = (15 * window.innerHeight / 100 + y) + 'px';
-  game.appendChild(obstacle);
-  
-  obstacles.push({
-    element: obstacle,
-    type: type,
-    x: x,
-    y: y,
-    width: 45,
-    height: 45
-  });
+function createObstacle(type,x,y) {
+  const o=document.createElement('div'); o.className=`obstacle ${type}`;
+  o.style.left=x+'px'; o.style.bottom=(15*window.innerHeight/100+y)+'px'; game.appendChild(o);
+  obstacles.push({element:o,type,x,y,width:45,height:45});
 }
 
 function createFlag(x) {
   const f=document.createElement('div'); f.className='flag'; f.style.left=x+'px'; game.appendChild(f);
-
-    return {element:f, x, width:18, height:20*window.innerHeight/100};
-  }
-
-
+  return {element:f, x, width:18, height:20*window.innerHeight/100};
+}
 
 function createFlyingSpike() {
-
   const s=document.createElement('div'); s.className='obstacle flying-spike';
-
   s.style.width='40px'; s.style.height='40px'; s.style.background='#444';
-
   s.style.clipPath='polygon(0 100%, 50% 0, 100% 100%)';
-
   let startX=gameWidth+100, y=Math.random()*(window.innerHeight*0.6)+window.innerHeight*0.2;
-
   s.style.left=startX+'px'; s.style.bottom=y+'px'; game.appendChild(s);
-
   flyingSpikes.push({element:s,x:startX,y,width:40,height:40,speed:5+Math.random()*3});
-
 }
-
 
 function checkCollision(a,b) {
-
   return a.x<b.x+b.width && a.x+a.width>b.x && a.y<b.y+b.height && a.y+a.height>b.y;
-
 }
 
-
-
 function resetPlayer(initial=false) {
-
   if(!initial){ lives--; livesEl.textContent=lives; if(lives<=0){ endGame(); return; } }
-
   gameState={x:100,y:0,vx:0,vy:0,isJumping:false,onGround:true};
-
   cameraX=0; game.style.transform='translateX(0)';
 }
 
-function resetPlayer(initial = false) {
-  if (!initial) {
-    lives--;
-    livesEl.textContent = lives;
-    
-    if (lives <= 0) {
-      endGame();
-      return;
-    }
-  }
-  
-  gameState.x = 100;
-  gameState.y = 0;
-  gameState.vx = 0;
-  gameState.vy = 0;
-  gameState.isJumping = false;
-  gameState.onGround = true;
-  
-  // Reset view
-  cameraX = 0;
-  game.style.transform = 'translateX(0)';
-}
-
 function endGame() {
- gameRunning=false; gameOver.style.animation='gameOver 0.5s forwards';
-
+  gameRunning=false; gameOver.style.animation='gameOver 0.5s forwards';
   setTimeout(()=>{
-
     gameOver.style.animation='none'; gameOver.style.opacity='0';
-
     startScreen.style.display='flex'; score=0; level=1; lives=3;
-
   },3000);
 }
 
 function gameLoop() {
-   if (!gameRunning) { requestAnimationFrame(gameLoop); return; }
-
-
+  if (!gameRunning) { requestAnimationFrame(gameLoop); return; }
 
   const left = keys['ArrowLeft'] || keys['KeyA'] || mobileControls.left;
-
   const right = keys['ArrowRight'] || keys['KeyD'] || mobileControls.right;
-
   const jump = keys['Space'] || keys['ArrowUp'] || keys['KeyW'] || mobileControls.jump;
 
-
-
   if (left) {
-
     gameState.vx = -physics.moveSpeed;
-
     player.classList.add('walking');
-
   } else if (right) {
-
     gameState.vx = physics.moveSpeed;
-
     player.classList.add('walking');
-
   } else {
-
     gameState.vx *= physics.friction;
-
     player.classList.remove('walking');
-
   }
 
-
-
   if (jump && gameState.onGround) {
-
     gameState.vy = physics.jumpStrength;
     gameState.isJumping = true;
     gameState.onGround = false;
+    player.classList.add('jumping');
   }
-  
-  // Apply physics
+
   gameState.vy -= physics.gravity;
   gameState.x += gameState.vx;
   gameState.y += gameState.vy;
-  
-  // Ground collision
+
   if (gameState.y <= 0) {
-    gameState.y = 0; 
-    gameState.vy = 0; 
-    gameState.isJumping = false;
+    gameState.y = 0;
+    gameState.vy = 0;
     gameState.onGround = true;
+    gameState.isJumping = false;
+    player.classList.remove('jumping');
   }
-  
-  // Boundaries
+
   if (gameState.x < 0) gameState.x = 0;
   if (gameState.x > gameWidth - 50) gameState.x = gameWidth - 50;
-  
-  // Update player visual state
-  player.classList.toggle('jumping', gameState.isJumping);
-  
-  // Update player position
+
+  const viewWidth = window.innerWidth;
+  const targetX = gameState.x - viewWidth / 2;
+  cameraX = Math.max(0, Math.min(targetX, gameWidth - viewWidth));
+
+  game.style.transform = `translateX(-${cameraX}px)`;
   player.style.left = gameState.x + 'px';
   player.style.bottom = (15 * window.innerHeight / 100 + gameState.y) + 'px';
-  
-  // Player collision box
-  const playerBox = {
-    x: gameState.x, 
-    y: gameState.y, 
-    width: 50,
-    height: 60
-  };
-  
-  // Coin collection
-  coins.forEach(coin => {
-    if (coin.collected) return;
-    
-    const coinBox = {
-      x: coin.x,
-      y: 10,
-      width: 35,
-      height: 35
-    };
-    
-    if (checkCollision(playerBox, coinBox)) {
-      coin.element.style.display = 'none';
-      coin.collected = true;
-      score += 100 + (level * 20);
-      scoreEl.textContent = score;
-    }
-  });
-  
-  // Obstacle collision
-  obstacles.forEach(obs => {
-    const obsBox = {
-      x: obs.x,
-      y: obs.y,
-      width: obs.width,
-      height: obs.height
-    };
-    
-    if (checkCollision(playerBox, obsBox)) {
-      if (obs.type === 'goomba' && gameState.vy < 0 && playerBox.y > obsBox.y + 20) {
-        // Jumped on goomba
-        obs.element.style.display = 'none';
-        obstacles = obstacles.filter(o => o !== obs);
-        score += 200 + (level * 50);
+
+  coins.forEach(c => {
+    if (!c.collected) {
+      let cRect = { x: c.x, y: 15 * window.innerHeight / 100 + 10, width: 35, height: 35 },
+          pRect = { x: gameState.x, y: 15 * window.innerHeight / 100 + gameState.y, width: 50, height: 60 };
+      if (checkCollision(pRect, cRect)) {
+        c.collected = true;
+        c.element.style.opacity = '0';
+        c.element.style.transform = 'scale(1.5)';
+        setTimeout(() => c.element.remove(), 300);
+        score += 100;
         scoreEl.textContent = score;
-        gameState.vy = 8; // Bounce
-      } else if (obs.type === 'block' && gameState.vy < 0) {
-        // Hit block from below
-        gameState.vy = 0;
-        gameState.y = obsBox.y + obsBox.height;
-      } else {
-        resetPlayer();
-        return;
       }
     }
   });
-  
-  // Flag collision (level complete)
-  const flagBox = {
-    x: flag.x,
-    y: 0,
-    width: flag.width,
-    height: flag.height
-  };
-  
-  if (checkCollision(playerBox, flagBox)) {
-    level++;
-    levelEl.textContent = level;
-    
-    // Show level up animation
-    levelUp.style.animation = 'levelUp 2s ease-out';
-    setTimeout(() => {
-      levelUp.style.animation = 'none';
-      levelUp.style.opacity = '0';
-    }, 2000);
-    
-    // Setup next level
-    setupLevel(level);
-    
-    // Bonus points for completing level
-    score += 500 * level;
-    scoreEl.textContent = score;
-    
-    // Reset player position but keep score/lives
-    resetPlayer(true);
+
+  obstacles.forEach(o => {
+    let oRect = { x: o.x, y: 15 * window.innerHeight / 100 + o.y, width: o.width, height: o.height },
+        pRect = { x: gameState.x, y: 15 * window.innerHeight / 100 + gameState.y, width: 50, height: 60 };
+    if (checkCollision(pRect, oRect)) {
+      resetPlayer();
+      return;
+    }
+  });
+
+  flyingSpikes.forEach((s, i) => {
+    s.x -= s.speed;
+    s.element.style.left = s.x + 'px';
+    let sRect = { x: s.x, y: s.y, width: s.width, height: s.height },
+        pRect = { x: gameState.x, y: 15 * window.innerHeight / 100 + gameState.y, width: 50, height: 60 };
+    if (checkCollision(pRect, sRect)) {
+      resetPlayer();
+      return;
+    }
+    if (s.x < -100) {
+      s.element.remove();
+      flyingSpikes.splice(i, 1);
+    }
+  });
+
+  // ✅ Smooth flag/level up logic
+  if (flag) {
+    let fRect = { x: flag.x, y: 15 * window.innerHeight / 100, width: flag.width, height: flag.height },
+        pRect = { x: gameState.x, y: 15 * window.innerHeight / 100 + gameState.y, width: 50, height: 60 };
+    if (checkCollision(pRect, fRect)) {
+      gameRunning = false;  // stop this loop safely
+      level++;
+      score += 500;
+      levelUp.style.animation = 'levelUp 2s forwards';
+      setTimeout(() => {
+        levelUp.style.animation = 'none';
+        levelUp.style.opacity = '0';
+        setupLevel(level);
+        resetPlayer(true);
+        scoreEl.textContent = score;
+        levelEl.textContent = level;
+        gameRunning = true;
+        requestAnimationFrame(gameLoop);  // restart loop
+      }, 2000);
+      return;  // exit current frame
+    }
   }
-  
-  // Camera follow (smooth)
-  const screenWidth = window.innerWidth;
-  const targetX = Math.max(0, Math.min(gameState.x - screenWidth / 2, gameWidth - screenWidth));
-  cameraX += (targetX - cameraX) * 2 ;
-  game.style.transform = `translateX(-${cameraX}px)`;
-  
+
+  mobileControls.jump = false;
   requestAnimationFrame(gameLoop);
 }
 
- flyingSpikes.forEach((s, i) => {
 
-    s.x -= s.speed;
-
-    s.element.style.left = s.x + 'px';
-
-    let sRect = { x: s.x, y: s.y, width: s.width, height: s.height },
-
-        pRect = { x: gameState.x, y: 15 * window.innerHeight / 100 + gameState.y, width: 50, height: 60 };
-
-    if (checkCollision(pRect, sRect)) {
-
-      resetPlayer();
-
-      return;
-
-    }
-
-    if (s.x < -100) {
-
-      s.element.remove();
-
-      flyingSpikes.splice(i, 1);
-
-    }
-
-  });
-
-// Keyboard controls
-document.addEventListener('keydown', e => {
-  if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Space', 'KeyA', 'KeyD', 'KeyW'].includes(e.code)) {
-    e.preventDefault();
-    keys[e.code] = true;
-  }
+// Key & mobile listeners
+document.addEventListener('keydown',e=>{ keys[e.code]=true; if(e.code==='Space') e.preventDefault(); });
+document.addEventListener('keyup',e=>{ keys[e.code]=false; });
+['left','right','jump'].forEach(btn=>{
+  let el=document.getElementById(btn+'Btn');
+  el.addEventListener('touchstart',e=>{e.preventDefault();mobileControls[btn]=true;});
+  el.addEventListener('touchend',e=>{e.preventDefault();mobileControls[btn]=false;});
+  el.addEventListener('mousedown',e=>{e.preventDefault();mobileControls[btn]=true;});
+  el.addEventListener('mouseup',e=>{e.preventDefault();mobileControls[btn]=false;});
 });
 
-document.addEventListener('keyup', e => {
-  if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Space', 'KeyA', 'KeyD', 'KeyW'].includes(e.code)) {
-    e.preventDefault();
-    keys[e.code] = false;
-  }
-});
+// Start button & init
+startBtn.addEventListener('click',()=>{ initGame(); });
+document.addEventListener('contextmenu',e=>{e.preventDefault();});
+document.addEventListener('DOMContentLoaded',()=>{ startScreen.style.display='flex'; });
 
-// Mobile controls - Fixed implementation
-const leftBtn = document.getElementById('leftBtn');
-const rightBtn = document.getElementById('rightBtn');
-const jumpBtn = document.getElementById('jumpBtn');
 
-// Left button
-leftBtn.addEventListener('touchstart', e => {
-  e.preventDefault();
-  mobileControls.left = true;
-});
-
-leftBtn.addEventListener('touchend', e => {
-  e.preventDefault();
-  mobileControls.left = false;
-});
-
-leftBtn.addEventListener('mousedown', e => {
-  e.preventDefault();
-  mobileControls.left = true;
-});
-
-leftBtn.addEventListener('mouseup', e => {
-  e.preventDefault();
-  mobileControls.left = false;
-});
-
-leftBtn.addEventListener('mouseleave', e => {
-  mobileControls.left = false;
-});
-
-// Right button
-rightBtn.addEventListener('touchstart', e => {
-  e.preventDefault();
-  mobileControls.right = true;
-});
-
-rightBtn.addEventListener('touchend', e => {
-  e.preventDefault();
-  mobileControls.right = false;
-});
-
-rightBtn.addEventListener('mousedown', e => {
-  e.preventDefault();
-  mobileControls.right = true;
-});
-
-rightBtn.addEventListener('mouseup', e => {
-  e.preventDefault();
-  mobileControls.right = false;
-});
-
-rightBtn.addEventListener('mouseleave', e => {
-  mobileControls.right = false;
-});
-
-// Jump button
-jumpBtn.addEventListener('touchstart', e => {
-  e.preventDefault();
-  mobileControls.jump = true;
-});
-
-jumpBtn.addEventListener('touchend', e => {
-  e.preventDefault();
-  mobileControls.jump = false;
-});
-
-jumpBtn.addEventListener('mousedown', e => {
-  e.preventDefault();
-  mobileControls.jump = true;
-});
-
-jumpBtn.addEventListener('mouseup', e => {
-  e.preventDefault();
-  mobileControls.jump = false;
-});
-
-jumpBtn.addEventListener('mouseleave', e => {
-  mobileControls.jump = false;
-});
-
-// Start game button
-startBtn.addEventListener('click', initGame);
-
-// Prevent touch scroll
-document.addEventListener('touchmove', e => {
-  if (gameRunning) e.preventDefault();
-}, { passive: false });
-
-// Initial setup - show start screen
-startScreen.style.display = 'flex';
 </script>
-
 </body>
 </html>
